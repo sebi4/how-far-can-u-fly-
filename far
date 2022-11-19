@@ -1,0 +1,35 @@
+if game.PlaceId == 9912491609 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("How Far Can U Fly?", "Midnight")
+
+    -- Main
+    local SMTab = Window:NewTab("SM")
+    local SMSection = SMTab:NewSection("Upgrade SM")
+    SMSection:NewButton("Upgrade SM", "Upgrades Speed Multiplier", function()
+        print("Clicked")
+
+        game:GetService("ReplicatedStorage").BuySM:FireServer()
+    end)
+
+    local RebirthTab = Window:NewTab("Rebirth")
+    local RebirthSection = RebirthTab:NewSection("Rebirth")
+    RebirthSection:NewButton("Rebirth", "You Need Some Amount Of Speed Multiplier", function()
+        print("Clicked")
+
+         game:GetService("ReplicatedStorage").BuyRebirth:FireServer()
+    end)
+
+    --Player
+      local Player = Window:NewTab("Player")
+      local SpeedJumpSection = Player:NewSection("Speed And Jump")
+   
+      SpeedJumpSection:NewSlider("Walkspeed", "Changes the walkspeed", 16000, 16, function(v)
+          game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+      end)
+   
+      SpeedJumpSection:NewSlider("Jumppower", "Changes the jumppower", 16000, 50, function(v)
+          game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+      end)
+   
+
+end
